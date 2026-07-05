@@ -11,9 +11,10 @@ let weekData = [
 /** Predictions
  *  Friday was the day that had the most screen time.
  *  Wednesday was my best focus day.
- *  I don't drink enough caffeine to say whether or not if affects my focus.
+ *  I don't drink enough caffeine to say whether or not it affects my focus.
 */
 
+//FUNCTION: DAY WITH HIGHEST SCREEN TIME
 function findHighestScreenTime(dayData) {
     let highestScreenTime = 0;
     let dayWithHighestScreenTime = "";
@@ -28,6 +29,7 @@ function findHighestScreenTime(dayData) {
     return dayWithHighestScreenTime;
 }
 
+//FUNCTION: AVERAGE SLEEP HOURS
 function averageSleepHours(dayData) {
     let totalSleepHours = 0;
 
@@ -38,20 +40,7 @@ function averageSleepHours(dayData) {
     return totalSleepHours / dayData.length;
 }
 
-function dayWithLeastSleep(dayData) {
-    let leastSleepHours = 20;
-    let dayWithLeastSleep = ""; 
-
-    for (let individualDay of dayData) {
-        if (individualDay.sleepHours < leastSleepHours) {
-            leastSleepHours = individualDay.sleepHours;
-            dayWithLeastSleep = individualDay.day;
-        }
-    }
-     
-    return dayWithLeastSleep;
-}
-
+//FUNCTION: MOST FREQUENT MOOD
 function mostFrequentMood(dayData) {
     let moodCount = {};
 
@@ -76,6 +65,21 @@ function mostFrequentMood(dayData) {
     }
 
     return mostFrequentMood;
+}
+
+//FUNCTION: DAY WITH LEAST SLEEP
+function dayWithLeastSleep(dayData) {
+    let leastSleepHours = 20;
+    let dayWithLeastSleep = ""; 
+
+    for (let individualDay of dayData) {
+        if (individualDay.sleepHours < leastSleepHours) {
+            leastSleepHours = individualDay.sleepHours;
+            dayWithLeastSleep = individualDay.day;
+        }
+    }
+     
+    return dayWithLeastSleep;
 }
 
 console.log("The day with the highest screen time is: " + findHighestScreenTime(weekData));
