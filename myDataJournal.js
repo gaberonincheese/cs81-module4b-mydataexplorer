@@ -85,10 +85,12 @@ function dayWithLeastSleep(dataDays) {
 }
 
 // User passes in a day, function will return a message based on screen time.
-function screenTimeMessages(givenDay, dataDays) {
+function screenTimeMessages() {
+
+    let dayWithHighestScreenTime = findHighestScreenTime(weekData);
 
     for (let individualDay of dataDays) {
-        if (givenDay === individualDay.day) {
+        if (dayWithHighestScreenTime === individualDay.day) {
             if (individualDay.screenTime >= 10) {
                 console.log("You're going way overboard with the screen time. Touch grass!");
             } else if (individualDay.screenTime >= 5) {
@@ -96,12 +98,14 @@ function screenTimeMessages(givenDay, dataDays) {
             } else {
                 console.log("Nice work. Let's capitalize on this and do something outside the house!");
             }
+        } else {
+            continue;
         }                   
     }
 }
 
 console.log("---Gabi's Weekly Data Journal---");
 console.log("Your highest day of screen time was: " + findHighestScreenTime(weekData));
-console.log(screenTimeMessages("Friday", weekData));
+console.log(screenTimeMessages());
 console.log("The most frequent mood you had this week was: " + mostFrequentMood(weekData));
 console.log("Your average sleep hours this week was: " + averageSleepHours(weekData));
