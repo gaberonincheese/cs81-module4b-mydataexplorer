@@ -8,7 +8,7 @@ I don't think anything surprised me. My data was fairly straightforward.
 
 What was tricky or rewarding?
 
-I found trying to determine my most frequent mood was a little tricky at first, but I referred to our previous work with the readingTracker.js file in order to help guide my code. 
+I found trying to determine my most frequent mood was a little tricky at first, but I referred to our previous work with the readingTracker.js file in order to help guide my code. Also, when I went in to write one of my other functions, screenTimeMessages, I kept getting an extra "undefined" line after printing my statements on the console. Strangely, when I switched to return statements, this issue vanished. I'm not sure why this was happening.
 
 How did using your own data change things?
 
