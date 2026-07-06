@@ -1,3 +1,5 @@
+// GitHub link: https://github.com/gaberonincheese/cs81-module4b-mydataexplorer
+
 let weekData = [
     { day: "Sunday", sleepHours: 8, screenTime: 9, mood: "Excited", caffeineIntake: 0, focusLevel: 4},
     { day: "Monday", sleepHours: 9, screenTime: 10, mood: "Intrigued", caffeineIntake: 0, focusLevel: 7},
@@ -15,11 +17,11 @@ let weekData = [
 */
 
 //FUNCTION: DAY WITH HIGHEST SCREEN TIME
-function findHighestScreenTime(dayData) {
+function findHighestScreenTime(dataDays) {
     let highestScreenTime = 0;
     let dayWithHighestScreenTime = "";
 
-    for (let individualDay of dayData) {
+    for (let individualDay of dataDays) {
         if (individualDay.screenTime > highestScreenTime) {
             highestScreenTime = individualDay.screenTime;
             dayWithHighestScreenTime = individualDay.day;
@@ -30,21 +32,21 @@ function findHighestScreenTime(dayData) {
 }
 
 //FUNCTION: AVERAGE SLEEP HOURS
-function averageSleepHours(dayData) {
+function averageSleepHours(dataDays) {
     let totalSleepHours = 0;
 
-    for (let individualDay of dayData) {
+    for (let individualDay of dataDays) {
         totalSleepHours += individualDay.sleepHours;
     }
 
-    return totalSleepHours / dayData.length;
+    return totalSleepHours / dataDays.length;
 }
 
 //FUNCTION: MOST FREQUENT MOOD
-function mostFrequentMood(dayData) {
+function mostFrequentMood(dataDays) {
     let moodCount = {};
 
-    for (let individualDay of dayData) {
+    for (let individualDay of dataDays) {
         let mood = individualDay.mood;
 
         if (!moodCount[mood]) {
@@ -68,11 +70,11 @@ function mostFrequentMood(dayData) {
 }
 
 //FUNCTION: DAY WITH LEAST SLEEP
-function dayWithLeastSleep(dayData) {
+function dayWithLeastSleep(dataDays) {
     let leastSleepHours = 20;
     let dayWithLeastSleep = ""; 
 
-    for (let individualDay of dayData) {
+    for (let individualDay of dataDays) {
         if (individualDay.sleepHours < leastSleepHours) {
             leastSleepHours = individualDay.sleepHours;
             dayWithLeastSleep = individualDay.day;
@@ -82,7 +84,24 @@ function dayWithLeastSleep(dayData) {
     return dayWithLeastSleep;
 }
 
-console.log("The day with the highest screen time is: " + findHighestScreenTime(weekData));
-console.log("The average sleep hours for the week is: " + averageSleepHours(weekData));
-console.log("The day with the least sleep hours is: " + dayWithLeastSleep(weekData));
-console.log("The most frequent mood for the week is: " + mostFrequentMood(weekData));
+// User passes in a day, function will return a message based on screen time.
+function screenTimeMessages(givenDay, dataDays) {
+
+    for (let individualDay of dataDays) {
+        if (givenDay === individualDay.day) {
+            if (individualDay.screenTime >= 10) {
+                console.log("You're going way overboard with the screen time. Touch grass!");
+            } else if (individualDay.screenTime >= 5) {
+                console.log("Not bad. But you should try to do some other work without a screen.");
+            } else {
+                console.log("Nice work. Let's capitalize on this and do something outside the house!");
+            }
+        }                   
+    }
+}
+
+console.log("---Gabi's Weekly Data Journal---");
+console.log("Your highest day of screen time was: " + findHighestScreenTime(weekData));
+console.log(screenTimeMessages("Friday", weekData));
+console.log("The most frequent mood you had this week was: " + mostFrequentMood(weekData));
+console.log("Your average sleep hours this week was: " + averageSleepHours(weekData));
